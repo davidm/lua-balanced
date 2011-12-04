@@ -1,0 +1,34 @@
+package = "lua-balanced"
+version = "$(_VERSION)"
+source = {
+   url = "git://github.com/davidm/lua-balanced.git",
+   tag='v$(_VERSION)'
+}
+description = {
+   summary    = "Functions for matching delimited snippets of Lua code in a string",
+   detailed   = [[
+     This module can, for example, match a Lua string, Lua comment, or Lua expression.
+     It is useful in particular for source filters or parsing Lua snippets
+     embedded in another language. It is inspired by Damian Conway's
+     Text::Balanced in Perl. The unique feature of this implementation is
+     that that it does not rigorously lex and parse the Lua grammar. 
+   ]],
+   license    =  "MIT/X11",
+   homepage   = "http://lua-users.org/wiki/LuaBalanced",
+       -- https://github.com/davidm/lua-balanced
+   maintainer = "David Manura <http://lua-users.org/wiki/DavidManura>",
+}
+dependencies = {
+   "lua >= 5.1",  -- including 5.2
+}
+build = {
+   type = "none",
+   install = {
+      lua = {
+         ["luabalanced"] = "luabalanced.lua",
+      }
+   },
+   copy_directories = {"tests"},
+}
+-- test: tests/test.lua
+-- _VERSION from luabalanced.lua

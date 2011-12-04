@@ -1,7 +1,7 @@
 -- luabalanced_test.lua
 -- test for luabalanced.lua 
 
-package.path = package.path .. ';tests/?.lua'
+package.path = package.path .. ';test/?.lua'
 
 local lb = require "luabalanced"
 local tuple = require "tuple"
@@ -86,7 +86,7 @@ asserteq(me'a+ -- b\n -- b\n b c', tuple('a+ -- b\n -- b\n b ', 18))
 
 -- check for exceptions giving lots of possibly not syntactically
 -- correct data.
-local text = io.open'tests/tests.lua':read'*a'
+local text = assert(io.open'test/test.lua'):read'*a'
 for i=1,#text do
   local res = me(text,i)
   if res[1] == 'error' and not res[2]:match('syntax error') then

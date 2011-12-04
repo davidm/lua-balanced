@@ -19,7 +19,7 @@ Home page: http://lua-users.org/wiki/LuaBalanced
 
 == Author ==
 
-(c) 2008, David Manura, Licensed under the same terms as Lua (MIT license).
+(c) 2008-2011, David Manura, Licensed under the same terms as Lua (MIT license).
 
 == References ==
 
