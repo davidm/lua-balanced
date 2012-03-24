@@ -1,0 +1,5 @@
+0.1.1.20120323
+  Fix performance of LB.gsub on large strings.
+
+0.1.20111203
+  Import older code to git repo.

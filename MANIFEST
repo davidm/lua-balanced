@@ -1,6 +1,7 @@
 README.txt
 MANIFEST
 util.mk
+CHANGES.txt
 COPYRIGHT.txt
 luabalanced.lua
 rockspec.in

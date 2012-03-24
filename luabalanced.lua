@@ -146,7 +146,7 @@ REFERENCES
 
 --]==]---------------------------------------------------------------------
 
-local M = {_TYPE='module', _NAME='luabalanaced', _VERSION='0.1.20111203'}
+local M = {_TYPE='module', _NAME='luabalanaced', _VERSION='0.1.1.20120323'}
 
 local assert = assert
 
@@ -333,15 +333,15 @@ M.match_explist = match_explist
 local function gsub(s, f)
   local pos = 1
   local posa = 1
-  local sret = ''
+  local ts = {}
   while 1 do
     pos = s:find('[%-\'\"%[]', pos)
     if not pos then break end
     if s:match('^%-%-', pos) then
       local exp = s:sub(posa, pos-1)
-      if #exp > 0 then sret = sret .. (f('e', exp) or exp) end
+      if #exp > 0 then ts[#ts+1] = (f('e', exp) or exp) end
       local comment; comment, pos = match_comment(s, pos)
-      sret = sret .. (f('c', assert(comment)) or comment)
+      ts[#ts+1] = (f('c', assert(comment)) or comment)
       posa = pos
     else
       local posb = s:find('^[\'\"%[]', pos)
@@ -349,8 +349,8 @@ local function gsub(s, f)
       if posb then str, pos = match_string(s, posb) end
       if str then
         local exp = s:sub(posa, posb-1)
-        if #exp > 0 then sret = sret .. (f('e', exp) or exp) end
-        sret = sret .. (f('s', str) or str)
+        if #exp > 0 then ts[#ts+1] = (f('e', exp) or exp) end
+        ts[#ts+1] = (f('s', str) or str)
         posa = pos
       else
         pos = pos + 1
@@ -358,8 +358,8 @@ local function gsub(s, f)
     end
   end
   local exp = s:sub(posa)
-  if #exp > 0 then sret = sret .. (f('e', exp) or exp) end
-  return sret
+  if #exp > 0 then ts[#ts+1] = (f('e', exp) or exp) end
+  return table.concat(ts)
 end
 M.gsub = gsub
 
