@@ -83,6 +83,7 @@ asserteq(me'a+ --[[]] b', tuple('a+ --[[]] b', 12))
 asserteq(me'a --[[]] + b', tuple('a --[[]] + b', 13))
 asserteq(me'a+ --[[]] --[=[]=] b', tuple('a+ --[[]] --[=[]=] b', 21))
 asserteq(me'a+ -- b\n -- b\n b c', tuple('a+ -- b\n -- b\n b ', 18))
+asserteq(me'a --""+\nb', tuple('a --""+\n', 9))
 
 -- check for exceptions giving lots of possibly not syntactically
 -- correct data.

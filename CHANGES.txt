@@ -1,3 +1,7 @@
+0.1.2.20130418
+  Fix: `--"..."` and `--'...'` are not delimited comments
+    like `--[[...]]` but rather terminate at the end of the line.
+
 0.1.1.20120323
   Fix performance of LB.gsub on large strings.
 

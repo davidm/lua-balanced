@@ -146,7 +146,7 @@ REFERENCES
 
 --]==]---------------------------------------------------------------------
 
-local M = {_TYPE='module', _NAME='luabalanaced', _VERSION='0.1.1.20120323'}
+local M = {_TYPE='module', _NAME='luabalanaced', _VERSION='0.1.2.20130418'}
 
 local assert = assert
 
@@ -234,9 +234,11 @@ local function match_comment(s, pos)
     return nil, pos
   end
   pos = pos + 2
-  local partt, post = match_string(s, pos)
-  if partt then
-    return '--' .. partt, post
+  if s:sub(pos,pos) == '[' then
+    local partt, post = match_string(s, pos)
+    if partt then
+      return '--' .. partt, post
+    end
   end
   local part; part, pos = s:match('^([^\n]*\n?)()', pos)
   return '--' .. part, pos
